@@ -1,4 +1,4 @@
-## Install Pinocchio
+## ISDN3000e-Lab4
 
 This lab requires **Pinocchio** for robot kinematics. Please install it following the commands below.
 
