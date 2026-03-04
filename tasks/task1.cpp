@@ -61,9 +61,7 @@ void task1() {
         if (mode == 1) {
             // TODO 1: Translate the object from origin to (-0.1, -0.1, -0.1) by modifying t, which can be defined by Eigen::Vector3d.
 
-            T(0, 3) = 0.1;
-            T(1, 3) = 0.1;
-            T(2, 3) = 0.1;
+
         }
 
         else if (mode == 2) {
@@ -72,9 +70,7 @@ void task1() {
             //  Here we keep R = I, and modify only t via t = [ r*cosθ, 0, r*sinθ ]
             //  The radius is set to 0.2 by default.
 
-            T(0, 3) = radius * std::cos(theta);
-            T(1, 3) = 0.0;
-            T(2, 3) = radius * std::sin(theta);
+
         }
         else if (mode == 3) {
             // TODO 3: Rotate the bunny around the WORLD Y axis by angle theta by setting the rotation matrix R.
@@ -83,17 +79,7 @@ void task1() {
             //  Ry= [  0     1    0    0]
             //      [ -sinθ  0   cosθ  0]
             //      [ 0      0    0    1]
-
-            double c = std::cos(theta);
-            double s = std::sin(theta);
-
-            T(0, 0) =  c;  T(0, 1) = 0.0; T(0, 2) =  s;
-            T(1, 0) = 0.0; T(1, 1) = 1.0; T(1, 2) = 0.0;
-            T(2, 0) = -s;  T(2, 1) = 0.0; T(2, 2) =  c;
-
-            T(0, 3) = 0;
-            T(1, 3) = 0;
-            T(2, 3) = 0;
+            
         }
 
 
