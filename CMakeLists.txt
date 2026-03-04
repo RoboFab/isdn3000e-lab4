@@ -39,20 +39,7 @@ add_executable(isdn3000e_lab4 main.cpp
         tasks/task3.h
 )
 
-#find_package(PkgConfig REQUIRED)
-#
-#pkg_check_modules(URDFDOM REQUIRED urdfdom)
-#pkg_check_modules(TINYXML2 REQUIRED tinyxml2)
-#
-#target_include_directories(isdn3000e_lab4 PRIVATE
-#        ${URDFDOM_INCLUDE_DIRS}
-#        ${TINYXML2_INCLUDE_DIRS}
-#)
-#
-#target_link_libraries(isdn3000e_lab4 PRIVATE
-#        ${URDFDOM_LIBRARIES}
-#        ${TINYXML2_LIBRARIES}
-#)
+
 target_link_libraries(isdn3000e_lab4
         PRIVATE
         polyscope
@@ -61,21 +48,6 @@ target_link_libraries(isdn3000e_lab4
         pinocchio::pinocchio
 )
 
-
-#add_custom_command(TARGET isdn3000e_lab4 POST_BUILD
-#        COMMAND ${CMAKE_COMMAND} -E copy_directory
-#        ${CMAKE_SOURCE_DIR}/robot
-#        $<TARGET_FILE_DIR:isdn3000e_lab4>/robot
-#)
-#
-#
-#
-#file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/assets)
-#configure_file(
-#        ${CMAKE_SOURCE_DIR}/assets/bunny.obj
-#        ${CMAKE_BINARY_DIR}/assets/bunny.obj
-#        COPYONLY
-#)
 
 set(RUNTIME_DIR $<TARGET_FILE_DIR:isdn3000e_lab4>)
 

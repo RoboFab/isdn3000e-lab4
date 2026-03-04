@@ -1,37 +1,16 @@
 #include <vector>
 #include <string>
 
-#include <Eigen/Dense>
 #include <igl/readOBJ.h>
-
 #include <polyscope/polyscope.h>
 #include <polyscope/surface_mesh.h>
-
 #include <pinocchio/parsers/urdf.hpp>
 #include <pinocchio/algorithm/kinematics.hpp>
 #include <pinocchio/algorithm/frames.hpp>
 #include <pinocchio/algorithm/joint-configuration.hpp>
 #include <pinocchio/algorithm/geometry.hpp>
-
-
 #include "imgui.h"
 
-
-#include <polyscope/polyscope.h>
-#include <polyscope/surface_mesh.h>
-#include <imgui.h>
-
-#include <pinocchio/parsers/urdf.hpp>
-#include <pinocchio/algorithm/kinematics.hpp>
-#include <pinocchio/algorithm/frames.hpp>
-#include <pinocchio/algorithm/geometry.hpp>
-
-#include <igl/readOBJ.h>
-
-#include <Eigen/Dense>
-#include <vector>
-#include <string>
-#include <iostream>
 
 
 
