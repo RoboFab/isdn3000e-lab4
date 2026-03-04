@@ -58,9 +58,9 @@ void task2() {
         pinocchio::SE3 M = geom_data.oMg[i];
         Eigen::Matrix3d R = M.rotation();
         Eigen::Vector3d t = M.translation();
-        Eigen::MatrixXd Vw = (V * R.transpose()).rowwise() + t.transpose();
+        V = (V * R.transpose()).rowwise() + t.transpose();
 
-        polyscope::registerSurfaceMesh(obj.name, Vw, F);
+        polyscope::registerSurfaceMesh(obj.name, V, F);
     }
 
     polyscope::show();

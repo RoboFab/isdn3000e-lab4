@@ -43,7 +43,7 @@ void task1() {
 
     auto* bunny = polyscope::registerSurfaceMesh("bunny", V, F);
 
-    int mode = 0; // 0:init 1:rotate(R) 2:translate(t) 3:orbit(t)
+    int mode = 0;
     float theta = 0.0f;
     Eigen::Vector3d t_init(0.1, 0.1, 0.1);
     Eigen::Vector3d center(0.0, 0.0, 0.0);
@@ -69,6 +69,7 @@ void task1() {
         else if (mode == 1) {
             // TODO 1: Translate the object from origin to (-0.1, -0.1, -0.1) by modifying t, which can be defined by Eigen::Vector3d.
             t = Eigen::Vector3d(-0.1, -0.1, -0.1);
+
             V_new = V.rowwise() + t.transpose();
         }
         else if (mode == 2) {
@@ -96,6 +97,7 @@ void task1() {
             t << radius * std::cos(theta),
                  0.0,
                  radius * std::sin(theta);
+
             V_new = V.rowwise() + t.transpose();
         }
 
