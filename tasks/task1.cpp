@@ -68,7 +68,8 @@ void task1() {
         }
         else if (mode == 1) {
             // TODO 1: Translate the object from origin to (-0.1, -0.1, -0.1) by modifying t, which can be defined by Eigen::Vector3d.
-            t = Eigen::Vector3d(-0.1, -0.1, -0.1);
+
+
             V_new = V.rowwise() + t.transpose();
         }
         else if (mode == 2) {
@@ -78,11 +79,6 @@ void task1() {
             //  Ry= [  0     1    0   ]
             //      [ -sinθ  0   cosθ ]
 
-            double c = std::cos(theta);
-            double s = std::sin(theta);
-            R <<  c, 0.0,  s,
-                  0.0, 1.0, 0.0,
-                  -s, 0.0,  c;
 
             Eigen::MatrixXd V_init = V.rowwise() + t_init.transpose();
             V_new = (V_init * R.transpose()).rowwise() + t.transpose();
@@ -93,9 +89,7 @@ void task1() {
             //  Here we keep R = I, and modify only t via t = [ r*cosθ, 0, r*sinθ ]
             //  The radius is set to 0.2 by default.
 
-            t << radius * std::cos(theta),
-                 0.0,
-                 radius * std::sin(theta);
+
             V_new = V.rowwise() + t.transpose();
         }
 
