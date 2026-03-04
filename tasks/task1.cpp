@@ -43,7 +43,7 @@ void task1() {
 
     auto* bunny = polyscope::registerSurfaceMesh("bunny", V, F);
 
-    int mode = 0; // 0:init 1:rotate(R) 2:translate(t) 3:orbit(t)
+    int mode = 0;
     float theta = 0.0f;
     Eigen::Vector3d t_init(0.1, 0.1, 0.1);
     Eigen::Vector3d center(0.0, 0.0, 0.0);
