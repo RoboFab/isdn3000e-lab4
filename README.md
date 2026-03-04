@@ -4,7 +4,7 @@ This lab requires **Pinocchio** for robot kinematics. Please install it followin
 
 ### Linux / WSL (Ubuntu 20.04 / 22.04 / 24.04)
 
-Run the following command in your Ubuntu/WSL terminal:
+Run the following commands in your Ubuntu / WSL terminal:
 
 ```bash
 sudo apt install -qqy lsb-release curl
@@ -20,6 +20,14 @@ $(lsb_release -cs) robotpkg" \
 
 sudo apt update
 sudo apt install -qqy robotpkg-py3*-pinocchio
+
+echo 'export PATH=/opt/openrobots/bin:$PATH' >> ~/.bashrc
+echo 'export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig:$PKG_CONFIG_PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+echo 'export PYTHONPATH=/opt/openrobots/lib/python3.10/site-packages:$PYTHONPATH' >> ~/.bashrc
+echo 'export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH' >> ~/.bashrc
+
+source ~/.bashrc
 ```
 
 ### MacOS (Homebrew)
