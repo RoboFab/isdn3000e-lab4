@@ -59,11 +59,11 @@ void task1() {
         Eigen::Matrix4d T = Eigen::Matrix4d::Identity();
 
         if (mode == 1) {
-            // TODO 1: Translate the object from origin to (-0.1, -0.1, -0.1) by modifying t, which can be defined by Eigen::Vector3d.
+            // TODO 1: Translate the object from origin to (θ, θ, θ) by modifying t, which can be defined by Eigen::Vector3d.
 
-            T(0, 3) = 0.1;
-            T(1, 3) = 0.1;
-            T(2, 3) = 0.1;
+            T(0, 3) = theta;
+            T(1, 3) = theta;
+            T(2, 3) = theta;
         }
 
         else if (mode == 2) {
