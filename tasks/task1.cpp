@@ -51,8 +51,8 @@ void task1() {
 
         ImGui::RadioButton("0) Initialize", &mode, 0);
         ImGui::RadioButton("1) Translate to target (edit t)", &mode, 1);
-        ImGui::RadioButton("2) Rotate about world Y (edit R)", &mode, 2);
-        ImGui::RadioButton("3) Orbit around world Y (edit t)", &mode, 3);
+        ImGui::RadioButton("2) Orbit around world Y (edit t)", &mode, 2);
+        ImGui::RadioButton("3) Rotate about world Y (edit R)", &mode, 3);
 
         ImGui::SliderFloat("theta", &theta, -3.14159f, 3.14159f);
 
@@ -79,7 +79,8 @@ void task1() {
             //  Ry= [  0     1    0    0]
             //      [ -sinθ  0   cosθ  0]
             //      [ 0      0    0    1]
-            
+
+
         }
 
 
