@@ -42,11 +42,8 @@ void task1() {
     }
 
     auto* bunny = polyscope::registerSurfaceMesh("bunny", V, F);
-
     int mode = 0;
     float theta = 0.0f;
-    Eigen::Vector3d t_init(0.1, 0.1, 0.1);
-    Eigen::Vector3d center(0.0, 0.0, 0.0);
 
     polyscope::state::userCallback = [&]() {
         ImGui::Text("Task1: Transformation");
@@ -59,45 +56,51 @@ void task1() {
 
         ImGui::SliderFloat("theta", &theta, -3.14159f, 3.14159f);
 
-        Eigen::Matrix3d R = Eigen::Matrix3d::Identity();
-        Eigen::Vector3d t = Eigen::Vector3d::Zero();
-        Eigen::MatrixXd V_new;
+        Eigen::Matrix4d T = Eigen::Matrix4d::Identity();
 
-        if (mode == 0) {
-            V_new = V.rowwise() + t_init.transpose();
-        }
-        else if (mode == 1) {
+        if (mode == 1) {
             // TODO 1: Translate the object from origin to (-0.1, -0.1, -0.1) by modifying t, which can be defined by Eigen::Vector3d.
-            t = Eigen::Vector3d(-0.1, -0.1, -0.1);
-            V_new = V.rowwise() + t.transpose();
+
+            T(0, 3) = 0.1;
+            T(1, 3) = 0.1;
+            T(2, 3) = 0.1;
         }
+
         else if (mode == 2) {
-            // TODO 2: Rotate the bunny around the WORLD Y axis by angle theta by setting the rotation matrix R.
-            //  The rotation matrix about Y axis is:
-            //      [ cosθ   0   sinθ ]
-            //  Ry= [  0     1    0   ]
-            //      [ -sinθ  0   cosθ ]
-
-            double c = std::cos(theta);
-            double s = std::sin(theta);
-            R <<  c, 0.0,  s,
-                  0.0, 1.0, 0.0,
-                  -s, 0.0,  c;
-
-            Eigen::MatrixXd V_init = V.rowwise() + t_init.transpose();
-            V_new = (V_init * R.transpose()).rowwise() + t.transpose();
-        }
-        else if (mode == 3) {
             float radius = 0.2f;
-            // TODO 3: Orbit the bunny around the WORLD Y axis by angle theta by setting the translation t.
+            // TODO 2: Orbit the bunny around the WORLD Y axis by angle theta by setting the translation t.
             //  Here we keep R = I, and modify only t via t = [ r*cosθ, 0, r*sinθ ]
             //  The radius is set to 0.2 by default.
 
-            t << radius * std::cos(theta),
-                 0.0,
-                 radius * std::sin(theta);
-            V_new = V.rowwise() + t.transpose();
+            T(0, 3) = radius * std::cos(theta);
+            T(1, 3) = 0.0;
+            T(2, 3) = radius * std::sin(theta);
         }
+        else if (mode == 3) {
+            // TODO 3: Rotate the bunny around the WORLD Y axis by angle theta by setting the rotation matrix R.
+            //  The rotation matrix about Y axis is:
+            //      [ cosθ   0   sinθ  0]
+            //  Ry= [  0     1    0    0]
+            //      [ -sinθ  0   cosθ  0]
+            //      [ 0      0    0    1]
+
+            double c = std::cos(theta);
+            double s = std::sin(theta);
+
+            T(0, 0) =  c;  T(0, 1) = 0.0; T(0, 2) =  s;
+            T(1, 0) = 0.0; T(1, 1) = 1.0; T(1, 2) = 0.0;
+            T(2, 0) = -s;  T(2, 1) = 0.0; T(2, 2) =  c;
+
+            T(0, 3) = 0;
+            T(1, 3) = 0;
+            T(2, 3) = 0;
+        }
+
+
+        Eigen::MatrixXd V_h(V.rows(), 4);
+        V_h.leftCols(3) = V;
+        V_h.col(3).setOnes();
+        Eigen::MatrixXd V_new = (V_h * T.transpose()).leftCols(3);
 
         bunny->updateVertexPositions(V_new);
     };

@@ -40,9 +40,9 @@ void task2() {
     //  1). Perform forward kinematics using pinocchio::forwardKinematics().
     //  2). Update all frame placements using pinocchio::updateFramePlacements().
     //  3). Update geometry placements using pinocchio::updateGeometryPlacements().
-    pinocchio::forwardKinematics(model, data, q);
-    pinocchio::updateFramePlacements(model, data);
-    pinocchio::updateGeometryPlacements(model, data, geom_model, geom_data);
+    // pinocchio::forwardKinematics(model, data, q);
+    // pinocchio::updateFramePlacements(model, data);
+    // pinocchio::updateGeometryPlacements(model, data, geom_model, geom_data);
 
     for (size_t i = 0; i < geom_model.geometryObjects.size(); ++i) {
         const auto& obj = geom_model.geometryObjects[i];
